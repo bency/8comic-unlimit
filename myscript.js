@@ -1,3 +1,4 @@
+var data;
 function extLocalStorage (namespace){
     var localStorage = window.localStorage || {};
     if(typeof namespace !== "string") {
