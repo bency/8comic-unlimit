@@ -73,8 +73,8 @@ var loadPic = function() {
     // 漫畫底部
     var btop = $('#TheTable > tbody > tr > td').height() + $('#TheTable > tbody > tr > td').offset().top;
     if ((loaded == 0 || btop - wtop < window.innerHeight * 1.2)  && data.total > 0) {
+        $('img:hidden').first().fadeIn(1000);
         if (loaded < data.total) {
-            $('img:hidden').first().fadeIn(1000);
             if (data.urls.length > 0 && $('img:hidden').length == 0) {
                 $('#TheTable > tbody > tr > td').append('<img style="display:none;margin-top:30px;" src="' + data.urls.pop() + '"><hr>');
                 loaded++;
