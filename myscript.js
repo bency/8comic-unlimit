@@ -93,7 +93,6 @@ var loadPic = function() {
 
 function scrollInit (ret) {
     if (ret) {
-        console.log(ret);
         data = ret;
         data.urls.reverse();
         for (i=0; i < 3; i++) {
