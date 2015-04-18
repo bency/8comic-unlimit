@@ -116,4 +116,9 @@ function getHtml (url) {
     });
 }
 $('#TheImg').remove();
+$('#Form1').ready(function(){
+    $('#Form1 > table:nth-child(3)').remove();
+    $('#Form1 > table:nth-child(3)').remove();
+    $('iframe').remove();
+});
 getHtml(location.href);
