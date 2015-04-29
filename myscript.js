@@ -123,7 +123,6 @@ function Vol (cs, ti, page) {
         return (parseInt((p - 1) / 10) % 10) + (((p - 1) % 10) * 3)
     };
     if ('undefined' === typeof page) {
-        console.log(ch);
         if (ch.indexOf("-") > 0) {
             page = parseInt(ch.split('-')[1]);
             ch = ch.split('-')[0];
@@ -160,7 +159,6 @@ function Vol (cs, ti, page) {
     }
 }
 var vol = new Vol(cs, ti);
-console.log(vol);
 $('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
 $('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
 $('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
@@ -172,7 +170,6 @@ var loadPic = function() {
     // 漫畫底部
     var btop = $('#TheTable > tbody > tr > td').height() + $('#TheTable > tbody > tr > td').offset().top;
     if ((btop - wtop > window.innerHeight * 1.2)) {
-        console.log(btop - wtop, window.innerHeight * 1.2);
         return;
     }
     $('img:hidden').first().fadeIn(1000);
@@ -180,7 +177,6 @@ var loadPic = function() {
         $('#TheTable > tbody > tr > td').append('<img style="display:none;margin-top:30px;" src="' + vol.getPicUrl() + '"><hr>');
         path = location.href.split('=')[0];
         new_url = path + '=' + vol.getUrlPostfix();
-        console.log(new_url);
         history.pushState({}, null, new_url);
     }
 }
