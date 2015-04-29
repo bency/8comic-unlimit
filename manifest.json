@@ -6,7 +6,6 @@
   "icons": {},
   "permissions": [
     "http://new.comicvip.com/*",
-    "http://infinite.bency.org/*",
     "tabs",
     "activeTab"
   ],
