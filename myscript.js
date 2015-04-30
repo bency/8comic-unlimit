@@ -161,6 +161,7 @@ function Vol (cs, ti, page) {
             ch = volInfo.nextCh;
             volInfo = getVolHash();
             this.volHash = volInfo.volHash;
+            maxPage = ss(this.volHash, 7, 3);
         } else {
             page++;
         }
