@@ -182,16 +182,16 @@ var loadPic = function() {
 
     // 漫畫底部
     var btop = $('#TheTable > tbody > tr > td').height() + $('#TheTable > tbody > tr > td').offset().top;
-    if ((btop - wtop > window.innerHeight * 1.2)) {
-        return;
-    }
-    $('img:hidden').first().fadeIn(1000);
     if ($('img:hidden').length < 2) {
         $('#TheTable > tbody > tr > td').append('<img style="display:none;margin-top:30px;" src="' + vol.getPicUrl() + '"><hr>');
         path = location.href.split('=')[0];
         new_url = path + '=' + vol.getUrlPostfix();
         history.pushState({}, null, new_url);
     }
+    if ((btop - wtop > window.innerHeight * 1.2)) {
+        return;
+    }
+    $('img:hidden').first().fadeIn(1000);
 }
 $(window).on('scroll', loadPic);
 
