@@ -176,8 +176,6 @@ function Vol (cs, ti, page) {
 }
 var vol = new Vol(cs, ti);
 $('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
-$('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
-$('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
 
 var loadPic = function() {
     // 畫面上緣
