@@ -156,7 +156,7 @@ function Vol (cs, ti, page) {
         var url = 'http://img' + ss(this.volHash, 4, 2) + '.8comic.com/' + ss(this.volHash, 6, 1) + '/' + vol_id + '/' + ss(this.volHash, 0, 4) + '/' + pad_zero(page) + '_' + ss(this.volHash, mm(page) + 10, 3, factor) + '.jpg';
         if (this.isEnd()) {
             return '#';
-        } else if (page == maxPage) {
+        } else if (page > maxPage) {
             page = 1;
             ch = volInfo.nextCh;
             volInfo = getVolHash();
@@ -168,7 +168,7 @@ function Vol (cs, ti, page) {
         return url;
     }
     this.isEnd = function () {
-        return (page == maxPage && ch == max_ch);
+        return (page > maxPage && "" == volInfo.nextCh);
     }
     this.getUrlPostfix = function () {
         return ch + '-' + Math.max(1, (page - 1));
