@@ -167,6 +167,9 @@ function Vol (cs, ti, page) {
         }
         return url;
     }
+    this.isEnd = function () {
+        return (page == maxPage && ch == max_ch);
+    }
     this.getUrlPostfix = function () {
         return ch + '-' + (page - 1);
     }
