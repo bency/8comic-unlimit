@@ -171,7 +171,7 @@ function Vol (cs, ti, page) {
         return (page == maxPage && ch == max_ch);
     }
     this.getUrlPostfix = function () {
-        return ch + '-' + (page - 1);
+        return ch + '-' + Math.max(1, (page - 1));
     }
 }
 var vol = new Vol(cs, ti);
