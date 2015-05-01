@@ -154,9 +154,9 @@ function Vol (cs, ti, page) {
     var maxPage = ss(this.volHash, 7, 3);
     this.getPicUrl = function () {
         var url = 'http://img' + ss(this.volHash, 4, 2) + '.8comic.com/' + ss(this.volHash, 6, 1) + '/' + vol_id + '/' + ss(this.volHash, 0, 4) + '/' + pad_zero(page) + '_' + ss(this.volHash, mm(page) + 10, 3, factor) + '.jpg';
-        if (page == maxPage && ch == max_ch) {
+        if (this.isEnd()) {
             return '#';
-        } else if (page == maxPage) {
+        } else if (page > maxPage) {
             page = 1;
             ch = volInfo.nextCh;
             volInfo = getVolHash();
@@ -167,13 +167,14 @@ function Vol (cs, ti, page) {
         }
         return url;
     }
+    this.isEnd = function () {
+        return (page > maxPage && "" == volInfo.nextCh);
+    }
     this.getUrlPostfix = function () {
-        return ch + '-' + (page - 1);
+        return ch + '-' + Math.max(1, (page - 1));
     }
 }
 var vol = new Vol(cs, ti);
-$('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
-$('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
 $('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
 
 var loadPic = function() {
@@ -182,7 +183,7 @@ var loadPic = function() {
 
     // 漫畫底部
     var btop = $('#TheTable > tbody > tr > td').height() + $('#TheTable > tbody > tr > td').offset().top;
-    if ($('img:hidden').length < 2) {
+    if ($('img:hidden').length < 2 && !vol.isEnd()) {
         $('#TheTable > tbody > tr > td').append('<img style="display:none;margin-top:30px;" src="' + vol.getPicUrl() + '"><hr>');
         path = location.href.split('=')[0];
         new_url = path + '=' + vol.getUrlPostfix();
