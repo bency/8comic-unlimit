@@ -185,7 +185,7 @@ var loadPic = function() {
 
     // 漫畫底部
     var btop = $('#TheTable > tbody > tr > td').height() + $('#TheTable > tbody > tr > td').offset().top;
-    if ($('img:hidden').length < 2) {
+    if ($('img:hidden').length < 2 && !vol.isEnd()) {
         $('#TheTable > tbody > tr > td').append('<img style="display:none;margin-top:30px;" src="' + vol.getPicUrl() + '"><hr>');
         path = location.href.split('=')[0];
         new_url = path + '=' + vol.getUrlPostfix();
