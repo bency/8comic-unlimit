@@ -154,7 +154,7 @@ function Vol (cs, ti, page) {
     var maxPage = ss(this.volHash, 7, 3);
     this.getPicUrl = function () {
         var url = 'http://img' + ss(this.volHash, 4, 2) + '.8comic.com/' + ss(this.volHash, 6, 1) + '/' + vol_id + '/' + ss(this.volHash, 0, 4) + '/' + pad_zero(page) + '_' + ss(this.volHash, mm(page) + 10, 3, factor) + '.jpg';
-        if (page == maxPage && ch == max_ch) {
+        if (this.isEnd()) {
             return '#';
         } else if (page == maxPage) {
             page = 1;
