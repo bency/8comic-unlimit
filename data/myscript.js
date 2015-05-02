@@ -126,6 +126,9 @@ function Vol (cs, ti, page) {
         if (ch.indexOf("-") > 0) {
             page = parseInt(ch.split('-')[1]);
             ch = ch.split('-')[0];
+        } else if('' == ch) {
+            ch = 1;
+            page = 1;
         } else {
             page = 1
         }
@@ -170,14 +173,21 @@ function Vol (cs, ti, page) {
     this.isEnd = function () {
         return (page > maxPage && "" == volInfo.nextCh);
     }
-    this.getUrlPostfix = function () {
-        return ch + '-' + Math.max(1, (page - 1));
+    this.getUrlPostfix = function (preLoad) {
+        return ch + '-' + Math.max(1, (page - 1 - preLoad));
     }
 }
 var vol = new Vol(cs, ti);
 $('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
 
-var loadPic = function() {
+// preLoad: 在視線範圍底下預讀幾張圖
+var loadPic = function(preLoad) {
+
+    if (parseInt(preLoad) < 1) {
+
+        // 預讀兩張
+        preLoad = 2;
+    }
     // 畫面上緣
     var wtop = $(window).scrollTop();
 
@@ -186,15 +196,17 @@ var loadPic = function() {
     if ($('img:hidden').length < 2 && !vol.isEnd()) {
         $('#TheTable > tbody > tr > td').append('<img style="display:none;margin-top:30px;" src="' + vol.getPicUrl() + '"><hr>');
         path = location.href.split('=')[0];
-        new_url = path + '=' + vol.getUrlPostfix();
+        new_url = path + '=' + vol.getUrlPostfix(preLoad);
         history.pushState({}, null, new_url);
     }
-    if ((btop - wtop > window.innerHeight * 1.2)) {
+    if ((btop - wtop > window.innerHeight * preLoad)) {
         return;
     }
-    $('img:hidden').first().fadeIn(1000);
+    $('img:hidden').first().show();
 }
-$(window).on('scroll', loadPic);
+$(window).on('scroll', function() {
+    loadPic(4);
+});
 
 // 去廣告
 $('#TheImg').remove();
