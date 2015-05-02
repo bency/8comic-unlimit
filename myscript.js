@@ -180,7 +180,14 @@ function Vol (cs, ti, page) {
 var vol = new Vol(cs, ti);
 $('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
 
-var loadPic = function() {
+// preLoad: 在視線範圍底下預讀幾張圖
+var loadPic = function(preLoad) {
+
+    if (parseInt(preLoad) < 1) {
+
+        // 預讀兩張
+        preLoad = 2;
+    }
     // 畫面上緣
     var wtop = $(window).scrollTop();
 
@@ -192,12 +199,14 @@ var loadPic = function() {
         new_url = path + '=' + vol.getUrlPostfix();
         history.pushState({}, null, new_url);
     }
-    if ((btop - wtop > window.innerHeight * 1.2)) {
+    if ((btop - wtop > window.innerHeight * preLoad)) {
         return;
     }
     $('img:hidden').first().fadeIn(1000);
 }
-$(window).on('scroll', loadPic);
+$(window).on('scroll', function() {
+    loadPic(4);
+});
 
 // 去廣告
 $('#TheImg').remove();
