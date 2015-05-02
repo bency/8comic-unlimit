@@ -126,6 +126,9 @@ function Vol (cs, ti, page) {
         if (ch.indexOf("-") > 0) {
             page = parseInt(ch.split('-')[1]);
             ch = ch.split('-')[0];
+        } else if('' == ch) {
+            ch = 1;
+            page = 1;
         } else {
             page = 1
         }
