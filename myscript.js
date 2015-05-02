@@ -90,17 +90,6 @@ function htmlEncode (value){
     return $('<div/>').text(value).html();
 }
 
-// 撈 comic hash
-var $scripts = $('script');
-for (var i = 0; i < $scripts.length; i++) {
-    if ($scripts[i].innerHTML.match(/var cs=/)) {
-        var $script = $scripts[i];
-        cs  = $script.innerHTML.match(/var cs='([\w]*)'/)[1] || null;
-        ti  = $script.innerHTML.match(/var ti=([\d]*);/)[1] || null;
-        chs = $script.innerHTML.match(/var chs=([\w]*);/)[1] || null;
-    }
-}
-
 /* cs: 很長的那串 hash
  * ti: http://new.comicvip.com/show/cool-103.html?ch=783 裡面的 103
  * chs: 最新話數
@@ -177,6 +166,20 @@ function Vol (cs, ti, page) {
         return ch + '-' + Math.max(1, (page - 1 - preLoad));
     }
 }
+
+var Comic = function () {
+    this.init = function () {
+
+// 撈 comic hash
+var $scripts = $('script');
+for (var i = 0; i < $scripts.length; i++) {
+    if ($scripts[i].innerHTML.match(/var cs=/)) {
+        var $script = $scripts[i];
+        cs  = $script.innerHTML.match(/var cs='([\w]*)'/)[1] || null;
+        ti  = $script.innerHTML.match(/var ti=([\d]*);/)[1] || null;
+        chs = $script.innerHTML.match(/var chs=([\w]*);/)[1] || null;
+    }
+}
 var vol = new Vol(cs, ti);
 $('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
 
@@ -209,6 +212,8 @@ $(window).on('scroll', function() {
     loadPic(4);
 });
 
+    }
+    this.removeAd = function () {
 // 去廣告$("img").attr("davidou","180");
 $('#TheImg').remove();
 $('#Form1').ready(function(){
@@ -217,3 +222,9 @@ $('#Form1').ready(function(){
     $('iframe').remove();
 });
 // 去廣告結束
+    }
+}
+
+var comic = new Comic();
+comic.removeAd();
+comic.init();
