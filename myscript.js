@@ -202,7 +202,7 @@ var loadPic = function(preLoad) {
     if ((btop - wtop > window.innerHeight * preLoad)) {
         return;
     }
-    $('img:hidden').first().fadeIn(1000);
+    $('img:hidden').first().show();
 }
 $(window).on('scroll', function() {
     loadPic(4);
