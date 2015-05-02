@@ -173,8 +173,8 @@ function Vol (cs, ti, page) {
     this.isEnd = function () {
         return (page > maxPage && "" == volInfo.nextCh);
     }
-    this.getUrlPostfix = function () {
-        return ch + '-' + Math.max(1, (page - 1));
+    this.getUrlPostfix = function (preLoad) {
+        return ch + '-' + Math.max(1, (page - 1 - preLoad));
     }
 }
 var vol = new Vol(cs, ti);
@@ -196,7 +196,7 @@ var loadPic = function(preLoad) {
     if ($('img:hidden').length < 2 && !vol.isEnd()) {
         $('#TheTable > tbody > tr > td').append('<img style="display:none;margin-top:30px;" src="' + vol.getPicUrl() + '"><hr>');
         path = location.href.split('=')[0];
-        new_url = path + '=' + vol.getUrlPostfix();
+        new_url = path + '=' + vol.getUrlPostfix(preLoad);
         history.pushState({}, null, new_url);
     }
     if ((btop - wtop > window.innerHeight * preLoad)) {
