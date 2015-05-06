@@ -171,50 +171,50 @@ var Comic = function () {
     var cs, ti, chs;
     this.init = function () {
 
-// 撈 comic hash
-var $scripts = $('script');
-for (var i = 0; i < $scripts.length; i++) {
-    if ($scripts[i].innerHTML.match(/var cs=/)) {
-        var $script = $scripts[i];
-        cs  = $script.innerHTML.match(/var cs='([\w]*)'/)[1] || null;
-        ti  = $script.innerHTML.match(/var ti=([\d]*);/)[1] || null;
-        chs = $script.innerHTML.match(/var chs=([\w]*);/)[1] || null;
-    }
-}
+        // 撈 comic hash
+        var $scripts = $('script');
+        for (var i = 0; i < $scripts.length; i++) {
+            if ($scripts[i].innerHTML.match(/var cs=/)) {
+                var $script = $scripts[i];
+                cs  = $script.innerHTML.match(/var cs='([\w]*)'/)[1] || null;
+                ti  = $script.innerHTML.match(/var ti=([\d]*);/)[1] || null;
+                chs = $script.innerHTML.match(/var chs=([\w]*);/)[1] || null;
+            }
+        }
     }
     this.start = function () {
-var vol = new Vol(cs, ti);
-$('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
+        var vol = new Vol(cs, ti);
+        $('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
 
-$(window).on('scroll', function() {
-    loadPic(4, vol);
-});
+        $(window).on('scroll', function() {
+            loadPic(4, vol);
+        });
     }
-// preLoad: 在視線範圍底下預讀幾張圖
-var loadPic = function(preLoad, vol) {
+    // preLoad: 在視線範圍底下預讀幾張圖
+    var loadPic = function(preLoad, vol) {
 
-    if (parseInt(preLoad) < 1) {
+        if (parseInt(preLoad) < 1) {
 
-        // 預讀兩張
-        preLoad = 2;
+            // 預讀兩張
+            preLoad = 2;
+        }
+        // 畫面上緣
+        var wtop = $(window).scrollTop();
+
+        // 漫畫底部
+        var btop = $('#TheTable > tbody > tr > td').height() + $('#TheTable > tbody > tr > td').offset().top;
+        if ($("img[data-comic='hidden']").length < 2 && !vol.isEnd()) {
+            $('#TheTable > tbody > tr > td').append('<img data-comic="hidden" style="display:none;margin-top:30px;" src="' + vol.getPicUrl() + '"><hr>');
+            path = location.href.split('=')[0];
+            new_url = path + '=' + vol.getUrlPostfix(preLoad);
+            history.pushState({}, null, new_url);
+        }
+        if ((btop - wtop > window.innerHeight * preLoad)) {
+            return;
+        }
+        $("img[data-comic='hidden']").first().attr("data-comic","display").show();
+
     }
-    // 畫面上緣
-    var wtop = $(window).scrollTop();
-
-    // 漫畫底部
-    var btop = $('#TheTable > tbody > tr > td').height() + $('#TheTable > tbody > tr > td').offset().top;
-    if ($("img[data-comic='hidden']").length < 2 && !vol.isEnd()) {
-        $('#TheTable > tbody > tr > td').append('<img data-comic="hidden" style="display:none;margin-top:30px;" src="' + vol.getPicUrl() + '"><hr>');
-        path = location.href.split('=')[0];
-        new_url = path + '=' + vol.getUrlPostfix(preLoad);
-        history.pushState({}, null, new_url);
-    }
-    if ((btop - wtop > window.innerHeight * preLoad)) {
-        return;
-    }
-    $("img[data-comic='hidden']").first().attr("data-comic","display").show();
-
-}
     this.removeAd = function () {
         // 去廣告$("img").attr("davidou","180");
         $('#TheImg').remove();
