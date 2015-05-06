@@ -184,7 +184,7 @@ var Comic = function () {
     }
     this.start = function () {
         var vol = new Vol(cs, ti);
-        $('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
+        $('#TheTable > tbody > tr > td').append('<img class="full-width" src="' + vol.getPicUrl() + '"><hr>');
 
         $(window).on('scroll', function() {
             loadPic(4, vol);
@@ -204,7 +204,7 @@ var Comic = function () {
         // 漫畫底部
         var btop = $('#TheTable > tbody > tr > td').height() + $('#TheTable > tbody > tr > td').offset().top;
         if ($("img[data-comic='hidden']").length < 2 && !vol.isEnd()) {
-            $('#TheTable > tbody > tr > td').append('<img data-comic="hidden" style="display:none;margin-top:30px;" src="' + vol.getPicUrl() + '"><hr>');
+            $('#TheTable > tbody > tr > td').append('<img class="full-width" data-comic="hidden" style="display:none;margin-top:30px;" src="' + vol.getPicUrl() + '"><hr>');
             path = location.href.split('=')[0];
             new_url = path + '=' + vol.getUrlPostfix(preLoad);
             history.pushState({}, null, new_url);
