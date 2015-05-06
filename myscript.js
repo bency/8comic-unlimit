@@ -214,14 +214,14 @@ $(window).on('scroll', function() {
 
     }
     this.removeAd = function () {
-// 去廣告$("img").attr("davidou","180");
-$('#TheImg').remove();
-$('#Form1').ready(function(){
-    $('#Form1 > table:nth-child(3)').remove();
-    $('#Form1 > table:nth-child(3)').remove();
-    $('iframe').remove();
-});
-// 去廣告結束
+        // 去廣告$("img").attr("davidou","180");
+        $('#TheImg').remove();
+        $('#Form1').ready(function(){
+            $('#Form1 > table:nth-child(3)').remove();
+            $('#Form1 > table:nth-child(3)').remove();
+            $('iframe').remove();
+        });
+        // 去廣告結束
     }
 }
 
