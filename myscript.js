@@ -184,7 +184,7 @@ var Comic = function () {
     }
     this.start = function () {
         var vol = new Vol(cs, ti);
-        $('#TheTable > tbody > tr > td').append('<img class="full-width" src="' + vol.getPicUrl() + '"><hr>');
+        $('body').append('<img class="full-width" src="' + vol.getPicUrl() + '"><hr>');
 
         $(window).on('scroll', function() {
             loadPic(4, vol);
@@ -202,9 +202,9 @@ var Comic = function () {
         var wtop = $(window).scrollTop();
 
         // 漫畫底部
-        var btop = $('#TheTable > tbody > tr > td').height() + $('#TheTable > tbody > tr > td').offset().top;
+        var btop = $('body').height();
         if ($("img[data-comic='hidden']").length < 2 && !vol.isEnd()) {
-            $('#TheTable > tbody > tr > td').append('<img class="full-width" data-comic="hidden" style="display:none;margin-top:30px;" src="' + vol.getPicUrl() + '"><hr>');
+            $('body').append('<img class="full-width" data-comic="hidden" style="display:none;margin-top:30px;" src="' + vol.getPicUrl() + '"><hr>');
             path = location.href.split('=')[0];
             new_url = path + '=' + vol.getUrlPostfix(preLoad);
             history.pushState({}, null, new_url);
@@ -218,16 +218,12 @@ var Comic = function () {
     this.removeAd = function () {
         // 去廣告$("img").attr("davidou","180");
         $('#TheImg').remove();
-        $('#Form1').ready(function(){
-            $('#Form1 > table:nth-child(3)').remove();
-            $('#Form1 > table:nth-child(3)').remove();
-            $('iframe').remove();
-        });
+        $('#Form1').remove();
         // 去廣告結束
     }
 }
 
 var comic = new Comic();
-comic.removeAd();
 comic.init();
+comic.removeAd();
 comic.start();
