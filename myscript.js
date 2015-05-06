@@ -184,7 +184,7 @@ var vol = new Vol(cs, ti);
 $('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
 
 // preLoad: 在視線範圍底下預讀幾張圖
-var loadPic = function(preLoad) {
+var loadPic = function(preLoad, vol) {
 
     if (parseInt(preLoad) < 1) {
 
@@ -209,7 +209,7 @@ var loadPic = function(preLoad) {
 
 }
 $(window).on('scroll', function() {
-    loadPic(4);
+    loadPic(4, vol);
 });
 
     }
