@@ -168,6 +168,7 @@ function Vol (cs, ti, page) {
 }
 
 var Comic = function () {
+    var cs, ti, chs;
     this.init = function () {
 
 // 撈 comic hash
@@ -180,9 +181,15 @@ for (var i = 0; i < $scripts.length; i++) {
         chs = $script.innerHTML.match(/var chs=([\w]*);/)[1] || null;
     }
 }
+    }
+    this.start = function () {
 var vol = new Vol(cs, ti);
 $('#TheTable > tbody > tr > td').append('<img src="' + vol.getPicUrl() + '"><hr>');
 
+$(window).on('scroll', function() {
+    loadPic(4, vol);
+});
+    }
 // preLoad: 在視線範圍底下預讀幾張圖
 var loadPic = function(preLoad, vol) {
 
@@ -208,11 +215,6 @@ var loadPic = function(preLoad, vol) {
     $("img[data-comic='hidden']").first().attr("data-comic","display").show();
 
 }
-$(window).on('scroll', function() {
-    loadPic(4, vol);
-});
-
-    }
     this.removeAd = function () {
         // 去廣告$("img").attr("davidou","180");
         $('#TheImg').remove();
@@ -228,3 +230,4 @@ $(window).on('scroll', function() {
 var comic = new Comic();
 comic.removeAd();
 comic.init();
+comic.start();
