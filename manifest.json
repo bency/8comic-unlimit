@@ -12,6 +12,7 @@
   "content_scripts": [
       {
           "matches": ["http://new.comicvip.com/*"],
+          "css": ["mystyle.css"],
           "js": ["jquery.js", "myscript.js"]
       }
   ],
