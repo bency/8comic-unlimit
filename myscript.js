@@ -148,7 +148,7 @@ function Vol (cs, ti, page) {
         var url = 'http://img' + ss(this.volHash, 4, 2) + '.8comic.com/' + ss(this.volHash, 6, 1) + '/' + vol_id + '/' + ss(this.volHash, 0, 4) + '/' + pad_zero(page) + '_' + ss(this.volHash, mm(page) + 10, 3, factor) + '.jpg';
         if (this.isEnd()) {
             return '#';
-        } else if (page == maxPage) {
+        } else if (page == maxPage && "" != volInfo.nextCh) {
             page = 1;
             ch = volInfo.nextCh;
             volInfo = getVolHash();
