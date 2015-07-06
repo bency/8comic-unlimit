@@ -5,13 +5,13 @@
   "description": "瀏覽 8comit 不換頁",
   "icons": {"16": "16_16_c.png", "48": "48_48_c.png", "64": "64_64_c.png", "128": "128_128_c.png"},
   "permissions": [
-    "http://new.comicvip.com/*",
+    "http://www.comicvip.com/show/*",
     "tabs",
     "activeTab"
   ],
   "content_scripts": [
       {
-          "matches": ["http://new.comicvip.com/*"],
+          "matches": ["http://www.comicvip.com/show/*"],
           "css": ["mystyle.css"],
           "js": ["jquery.js", "myscript.js"]
       }
