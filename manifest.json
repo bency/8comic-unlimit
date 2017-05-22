@@ -1,7 +1,7 @@
 {
   "name": "8comic unlimit",
   "short_name": "unlimit",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "瀏覽 8comit 不換頁",
   "icons": {"16": "16_16_c.png", "48": "48_48_c.png", "64": "64_64_c.png", "128": "128_128_c.png"},
   "permissions": [
@@ -11,7 +11,7 @@
   ],
   "content_scripts": [
       {
-          "matches": ["http://v.comicbus.com/online/*"],
+          "matches": ["http://v.comicbus.com/online/*", "http://v.nowcomic.com/online/*"],
           "css": ["mystyle.css"],
           "js": ["jquery.js", "myscript.js"]
       }
