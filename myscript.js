@@ -1,3 +1,15 @@
+var actualCode = '(' + function() {
+    // All code is executed in a local scope.
+    // For example, the following does NOT overwrite the global `alert` method
+    var alert = null;
+    // To overwrite a global variable, prefix `window`:
+    window.edetect= null;
+} + ')();';
+var script = document.createElement('script');
+script.textContent = actualCode;
+(document.head||document.documentElement).appendChild(script);
+script.remove();
+
 function extLocalStorage (namespace){
     var localStorage = window.localStorage || {};
     if(typeof namespace !== "string") {
