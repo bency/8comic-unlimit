@@ -169,10 +169,10 @@ function Vol (cs, ti, page) {
 
 var Comic = function () {
     var cs = '', ti = '', chs = '';
-    this.init = function () {
+    this.init = function (html) {
 
         // 撈 comic hash
-        var $scripts = $('script');
+        var $scripts = $(html).find('script');
         for (var i = 0; i < $scripts.length; i++) {
             if ($scripts[i].innerHTML.match(/var cs=/)) {
                 var $script = $scripts[i];
@@ -232,6 +232,8 @@ var Comic = function () {
 }
 
 var comic = new Comic();
-comic.init();
+$.get(location.href).done(function (html) {
+comic.init(html);
 comic.removeAd();
 comic.start();
+});
