@@ -168,7 +168,7 @@ function Vol (cs, ti, page) {
 }
 
 var Comic = function () {
-    var cs, ti, chs;
+    var cs = '', ti = '', chs = '';
     this.init = function () {
 
         // 撈 comic hash
