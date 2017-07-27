@@ -7,8 +7,14 @@
   "permissions": [
     "http://www.comicvip.com/show/*",
     "tabs",
-    "activeTab"
+    "activeTab",
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
   ],
+  "background": {
+      "scripts": ["block.js"]
+  },
   "content_scripts": [
       {
           "matches": ["http://v.comicbus.com/online/*", "http://v.nowcomic.com/online/*"],
