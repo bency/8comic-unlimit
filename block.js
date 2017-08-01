@@ -1,5 +1,5 @@
 var urls = [
-    '*://*.com/js/nview.js'
+    'chrome-extension://paioodidofebolkhokfcagmhiencnfmp/manifest.json'
 ];
 
 var response = function() {
