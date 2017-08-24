@@ -232,6 +232,7 @@ var Comic = function () {
 }
 
 var comic = new Comic();
+$('#TheImg').parent().prepend('<h3>8comit unlimit 修正中 請大家先暫時回到預設模式觀看，謝謝</h3>')
 //$.get(location.href).done(function (html) {
 //	comic.init(html);
 //	comic.removeAd();
