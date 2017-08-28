@@ -45,5 +45,17 @@ class Bootstrap {
         }
         return returnValue;
     }
+
+    lc(l) {
+        if (l.length != 2)
+            return l;
+        var az = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var a = l.substring(0, 1);
+        var b = l.substring(1, 2);
+        if (a == "Z")
+            return 8000 + az.indexOf(b);
+        else
+            return az.indexOf(a) * 52 + az.indexOf(b);
+    }
 }
 module.exports = Bootstrap;
