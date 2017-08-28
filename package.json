@@ -1,0 +1,26 @@
+{
+  "name": "8comic-unlimit",
+  "version": "1.0.0",
+  "description": "Read 8comit without \"NEXT\" ==============",
+  "main": "block.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bency/8comic-unlimit.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bency/8comic-unlimit/issues"
+  },
+  "homepage": "https://github.com/bency/8comic-unlimit#readme",
+  "devDependencies": {
+    "jest": "^20.0.4"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}
