@@ -1,4 +1,9 @@
 class Bootstrap {
+
+    constructor() {
+        this.y = 46;
+    }
+
     getBasicParams(html) {
         let cs = '',
             ti = '',
