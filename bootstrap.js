@@ -14,8 +14,8 @@ class Bootstrap {
             if ($scripts[i].innerHTML.match(/var cs=/)) {
                 let $script = $scripts[i];
                 cs  = $script.innerHTML.match(/var cs='([\w]*)'/)[1] || null;
-                ti  = $script.innerHTML.match(/var ti=([\d]*);/)[1] || null;
-                chs = $script.innerHTML.match(/var chs=([\w]*);/)[1] || null;
+                ti  = parseInt($script.innerHTML.match(/var ti=([\d]*);/)[1]) || null;
+                chs = parseInt($script.innerHTML.match(/var chs=([\w]*);/)[1]) || null;
             }
         }
         return {cs, ti, chs};
