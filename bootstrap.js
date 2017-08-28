@@ -62,5 +62,11 @@ class Bootstrap {
         var e = (a + '').substring(b, b + c);
         return (e);
     }
+    nn(n) {
+            return n < 10 ? '00' + n : n < 100 ? '0' + n : n;
+    }
+    mm(p) {
+            return (parseInt((p - 1) / 10) % 10) + (((p - 1) % 10) * 3)
+    }
 }
 module.exports = Bootstrap;
