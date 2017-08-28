@@ -57,5 +57,10 @@ class Bootstrap {
         else
             return az.indexOf(a) * 52 + az.indexOf(b);
     }
+
+    su(a, b, c) {
+        var e = (a + '').substring(b, b + c);
+        return (e);
+    }
 }
 module.exports = Bootstrap;
