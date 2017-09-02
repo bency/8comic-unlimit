@@ -156,9 +156,6 @@ function Vol (cs, ti, chs) {
                 return {volHash, nextCh, setId, maxPage};
             }
         }
-        volHash = ss(comicHash, cc - factor, factor);
-        nextCh = ss(comicHash, (ci - 1) * factor, 4);
-        return {volHash: volHash, nextCh: nextCh};
     }
 
     var volInfo = getVolHash();
