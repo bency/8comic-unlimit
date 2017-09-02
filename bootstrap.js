@@ -7,7 +7,7 @@ class Bootstrap {
         this.chs = '';
     }
 
-    getBasicParams(html) {
+    setBasicParams(html) {
         // 撈 comic hash
         let $scripts = $(html).find('script');
         for (let i = 0; i < $scripts.length; i++) {
@@ -18,6 +18,8 @@ class Bootstrap {
                 this.chs = parseInt($script.innerHTML.match(/var chs=([\w]*);/)[1]) || null;
             }
         }
+    }
+    getBasicParams() {
         return {cs: this.cs, ti: this.ti, chs: this.chs};
     }
 
