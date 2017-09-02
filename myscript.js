@@ -161,7 +161,7 @@ function Vol (cs, ti, chs) {
     var volInfo = getVolHash();
     this.volHash = volInfo.volHash;
     this.getPicUrl = function () {
-        var url = 'http://img' + ss(this.volHash, 4, 2) + '.8comic.com/' + ss(this.volHash, 6, 1) + '/' + vol_id + '/' + ss(this.volHash, 0, 4) + '/' + pad_zero(page) + '_' + ss(this.volHash, mm(page) + 10, 3, factor) + '.jpg';
+        var url = 'http://img' + su(volInfo.setId, 0, 1) + '.8comic.com/' + su(volInfo.setId, 1, 1) + '/' + vol_id + '/' + ch + '/' + pad_zero(page) + '_' + su(this.volHash, mm(page), 3) + '.jpg';
         if (this.isEnd()) {
             return '#';
         } else if (page >= volInfo.maxPage && "" != volInfo.nextCh) {
