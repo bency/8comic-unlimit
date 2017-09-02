@@ -2,7 +2,7 @@
  * ti: http://new.comicvip.com/show/cool-103.html?ch=783 裡面的 103
  * chs: 最新話數
  */
-function Vol (cs, ti, page) {
+function VolSp (cs, ti, chs) {
     var comicHash = cs;
     var ch = request('ch');
     var vol_id = ti;
