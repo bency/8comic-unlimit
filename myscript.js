@@ -145,12 +145,14 @@ function Vol (cs, ti, page) {
         var volHash = '';
         var ci = 0;
         var nextCh = 0;
+        var maxPage = 0;
         for (var i = 0; i < cc / factor; i++) {
             if (ss(comicHash, i * factor, 4) == ch) {
                 volHash = ss(comicHash, i * factor, factor, factor);
+                maxPage = lc(su(comicHash, i * factor + 0, 2));
                 ci = i;
                 nextCh = ss(comicHash, (ci + 1) * factor, 4);
-                return {volHash: volHash, nextCh: nextCh};
+                return {volHash: volHash, nextCh: nextCh, maxPage};
             }
         }
         volHash = ss(comicHash, cc - factor, factor);
@@ -160,24 +162,22 @@ function Vol (cs, ti, page) {
 
     var volInfo = getVolHash();
     this.volHash = volInfo.volHash;
-    var maxPage = ss(this.volHash, 7, 3);
     this.getPicUrl = function () {
         var url = 'http://img' + ss(this.volHash, 4, 2) + '.8comic.com/' + ss(this.volHash, 6, 1) + '/' + vol_id + '/' + ss(this.volHash, 0, 4) + '/' + pad_zero(page) + '_' + ss(this.volHash, mm(page) + 10, 3, factor) + '.jpg';
         if (this.isEnd()) {
             return '#';
-        } else if (page == maxPage && "" != volInfo.nextCh) {
+        } else if (page >= volInfo.maxPage && "" != volInfo.nextCh) {
             page = 1;
             ch = volInfo.nextCh;
             volInfo = getVolHash();
             this.volHash = volInfo.volHash;
-            maxPage = ss(this.volHash, 7, 3);
         } else {
             page++;
         }
         return url;
     }
     this.isEnd = function () {
-        return (page > maxPage && "" == volInfo.nextCh);
+        return (page > volInfo.maxPage && "" == volInfo.nextCh);
     }
     this.getUrlPostfix = function (preLoad) {
         return ch + '-' + Math.max(1, (page - 1 - preLoad));
