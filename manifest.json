@@ -19,7 +19,7 @@
       {
           "matches": ["http://v.comicbus.com/online/*", "http://v.nowcomic.com/online/*"],
           "css": ["mystyle.css"],
-          "js": ["jquery.js", "myscript.js"]
+          "js": ["sp.js", "spp.js", "jquery.js", "myscript.js"]
       }
   ],
   "manifest_version": 2,
