@@ -94,13 +94,13 @@ function htmlEncode (value){
  * ti: http://new.comicvip.com/show/cool-103.html?ch=783 裡面的 103
  * chs: 最新話數
  */
-function Vol (cs, ti, page) {
+function Vol (cs, ti, chs) {
     var comicHash = cs;
     var ch = request('ch');
     var vol_id = ti;
     var factor = 46;
     var max_ch = comicHash.length / factor - 1;
-    var page = page;
+    var page = 0;
     var pad_zero = function (n) {
         return n < 10 ? '00' + n : n < 100 ? '0' + n : n;
     }
@@ -128,7 +128,7 @@ function Vol (cs, ti, page) {
     var mm = function (p) {
         return (parseInt((p - 1) / 10) % 10) + (((p - 1) % 10) * 3)
     };
-    if ('undefined' === typeof page) {
+    if (0 === page) {
         if (ch.indexOf("-") > 0) {
             page = parseInt(ch.split('-')[1]);
             ch = ch.split('-')[0];
