@@ -92,6 +92,7 @@ function htmlEncode (value){
 
 var Comic = function () {
     var cs = '', ti = '', chs = '';
+    var vol = null;
     this.init = function (html) {
 
         // 撈 comic hash
@@ -102,6 +103,13 @@ var Comic = function () {
                 cs  = $script.innerHTML.match(/var cs='([\w]*)'/)[1] || null;
                 ti  = $script.innerHTML.match(/var ti=([\d]*);/)[1] || null;
                 chs = $script.innerHTML.match(/var chs=([\w]*);/)[1] || null;
+            }
+            if ($scripts[i].innerHTML.match(/spp();/)) {
+                vol = new VolSpp(cs, ti, chs);
+                console.log('使用 volspp');
+            } else {
+                vol = new VolSp(cs, ti, chs);
+                console.log('使用 volsp');
             }
         }
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -114,7 +122,6 @@ var Comic = function () {
     }
     this.start = function () {
         $('body').append('<div class="container" id="main"></div>');
-        var vol = new Vol(cs, ti, chs);
         $('#main').append('<img class="full-width" src="' + vol.getPicUrl() + '"><hr>');
 
         $(window).on('scroll', function() {
