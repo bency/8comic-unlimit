@@ -150,9 +150,10 @@ function Vol (cs, ti, chs) {
             if (lc(su(comicHash, i * factor + 42, 2)) == ch) {
                 volHash = lc(su(comicHash, i * factor + 2, 40));
                 maxPage = lc(su(comicHash, i * factor + 0, 2));
+                setId   = lc(su(comicHash, i * factor + 44, 2));
                 ci = i;
                 nextCh = ci < chs - 1 ? lc(su(comicHash, ci * factor + factor + 42, 2)) : ch;
-                return {volHash, nextCh, maxPage};
+                return {volHash, nextCh, setId, maxPage};
             }
         }
         volHash = ss(comicHash, cc - factor, factor);
