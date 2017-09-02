@@ -1,10 +1,11 @@
 class Bootstrap {
 
-    constructor() {
+    constructor(html) {
         this.y = 46;
         this.cs = '';
         this.ti = '';
         this.chs = '';
+        this.setBasicParams(html);
     }
 
     setBasicParams(html) {
