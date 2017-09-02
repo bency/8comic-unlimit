@@ -98,7 +98,7 @@ function Vol (cs, ti, page) {
     var comicHash = cs;
     var ch = request('ch');
     var vol_id = ti;
-    var factor = 50;
+    var factor = 46;
     var max_ch = comicHash.length / factor - 1;
     var page = page;
     var pad_zero = function (n) {
