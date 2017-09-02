@@ -152,7 +152,7 @@ function Vol (cs, ti, chs) {
                 maxPage = lc(su(comicHash, i * factor + 0, 2));
                 ci = i;
                 nextCh = ss(comicHash, (ci + 1) * factor, 4);
-                return {volHash: volHash, nextCh: nextCh, maxPage};
+                return {volHash, nextCh, maxPage};
             }
         }
         volHash = ss(comicHash, cc - factor, factor);
