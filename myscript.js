@@ -206,7 +206,7 @@ var Comic = function () {
     }
     this.start = function () {
         $('body').append('<div class="container" id="main"></div>');
-        var vol = new Vol(cs, ti);
+        var vol = new Vol(cs, ti, chs);
         $('#main').append('<img class="full-width" src="' + vol.getPicUrl() + '"><hr>');
 
         $(window).on('scroll', function() {
