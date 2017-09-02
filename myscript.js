@@ -148,7 +148,7 @@ function Vol (cs, ti, chs) {
         var maxPage = 0;
         for (var i = 0; i < cc / factor; i++) {
             if (lc(su(comicHash, i * factor + 42, 2)) == ch) {
-                volHash = ss(comicHash, i * factor, factor, factor);
+                volHash = lc(su(comicHash, i * factor + 2, 40));
                 maxPage = lc(su(comicHash, i * factor + 0, 2));
                 ci = i;
                 nextCh = ss(comicHash, (ci + 1) * factor, 4);
