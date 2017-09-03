@@ -162,8 +162,8 @@ var Comic = function () {
 }
 
 var comic = new Comic();
-$.get(location.href).done(function (html) {
-	comic.init(html);
-	comic.removeAd();
-	comic.start();
-});
+//$.get(location.href).done(function (html) {
+//	comic.init(html);
+//	comic.removeAd();
+//	comic.start();
+//});
