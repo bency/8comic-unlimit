@@ -7,7 +7,7 @@ function VolSpp (cs, ti, chs) {
     var ch = request('ch');
     var vol_id = ti;
     var factor = 46;
-    var max_ch = comicHash.length / factor - 1;
+    var max_ch = chs;
     var page = 0;
     var pad_zero = function (n) {
         return n < 10 ? '00' + n : n < 100 ? '0' + n : n;
